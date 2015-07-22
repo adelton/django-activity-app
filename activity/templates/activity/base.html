@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<html>
+  <head>
+  </head>
+
+  <body>
+    <div>
+      {% if user.is_anonymous %}
+      <a href="/">Not logged in</a> ::
+      <a href="{% url 'login' %}">login</a>
+      {% else %}
+      <a href="/">Logged in as {{ user }}</a> ::
+      <a href="{% url 'logout' %}">logout</a>
+      {% endif %}
+	:: <a href="/admin/">admin</a>
+    </div>
+    <hr/>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

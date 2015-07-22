@@ -125,3 +125,5 @@ STATIC_URL = '/static/'
 ALLOWED_HOSTS = [ "*" ]
 
 INSTALLED_APPS.append( 'activity' )
+
+LOGIN_REDIRECT_URL = '/'
