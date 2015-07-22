@@ -123,3 +123,5 @@ STATIC_URL = '/static/'
 # Patching the default
 
 ALLOWED_HOSTS = [ "*" ]
+
+INSTALLED_APPS.append( 'activity' )
