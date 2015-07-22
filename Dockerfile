@@ -15,8 +15,9 @@ RUN mkdir -p /var/www/django \
 	&& python manage.py migrate
 COPY manage.py /app/
 COPY mysite /app/mysite/
-COPY activity /app/activity/
-RUN diff -ru /var/www/django/mysite /app || :
+RUN diff -ru /var/www/django/mysite/mysite /app/mysite || :
+RUN rm -rf /var/www/django/mysite/mysite && cp -r /app/mysite /var/www/django/mysite/mysite
+COPY activity /var/www/django/mysite/activity
 
 EXPOSE 8000
 ENTRYPOINT cd /var/www/django && source bin/activate && cd mysite && python manage.py runserver 0.0.0.0:8000

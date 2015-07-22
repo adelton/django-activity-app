@@ -19,3 +19,10 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
+
+
+# Patching the default
+
+from django.conf.urls import include
+
+urlpatterns.append( url(r'^', include('activity.urls')) )
