@@ -127,3 +127,7 @@ ALLOWED_HOSTS = [ "*" ]
 INSTALLED_APPS.append( 'activity' )
 
 LOGIN_REDIRECT_URL = '/'
+
+DATETIME_FORMAT = 'N j, Y, H:i:s'
+
+USE_L10N = False
