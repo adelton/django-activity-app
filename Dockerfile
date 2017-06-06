@@ -8,7 +8,10 @@ RUN mkdir -p /var/www/django \
 	&& virtualenv . \
 	&& source bin/activate \
 	&& pip install Django \
-	&& django-admin startproject mysite
+	&& django-admin startproject mysite \
+	&& cd mysite \
+	&& python manage.py startapp activity
 COPY manage.py /app/
 COPY mysite /app/mysite/
+COPY activity /app/activity/
 RUN diff -ru /var/www/django/mysite /app || :
