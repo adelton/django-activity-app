@@ -11,6 +11,7 @@ RUN mkdir -p /var/www/django \
 	&& django-admin startproject mysite \
 	&& cd mysite \
 	&& python manage.py startapp activity \
+	&& sed -i 's#^\(ALLOWED_HOSTS\).*#\1 = [ "*" ]#' mysite/settings.py \
 	&& python manage.py migrate
 COPY manage.py /app/
 COPY mysite /app/mysite/
