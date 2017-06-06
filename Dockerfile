@@ -12,7 +12,9 @@ RUN mkdir -p /var/www/django \
 	&& cd mysite \
 	&& python manage.py startapp activity \
 	&& sed -i 's#^\(ALLOWED_HOSTS\).*#\1 = [ "*" ]#' mysite/settings.py \
-	&& python manage.py migrate
+	&& python manage.py migrate \
+	&& echo 'from django.contrib.auth.models import User; User.objects.create_superuser("admin", "admin@example.test", "nimda")' | python manage.py shell
+
 COPY manage.py /app/
 COPY mysite /app/mysite/
 RUN diff -ru /var/www/django/mysite/mysite /app/mysite || :
