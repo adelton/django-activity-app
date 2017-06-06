@@ -9,3 +9,6 @@ RUN mkdir -p /var/www/django \
 	&& source bin/activate \
 	&& pip install Django \
 	&& django-admin startproject mysite
+COPY manage.py /app/
+COPY mysite /app/mysite/
+RUN diff -ru /var/www/django/mysite /app || :
