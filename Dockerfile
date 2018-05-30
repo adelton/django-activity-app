@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:25
+FROM registry.fedoraproject.org/fedora:28
 
 MAINTAINER Jan Pazdziora
 
