@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2016 Jan Pazdziora
+# Copyright 2016--2018 Jan Pazdziora
 #
 # Licensed under the Apache License, Version 2.0 (the "License").
 
@@ -25,7 +25,7 @@ def index(request):
     return render(request, 'activity/index.html', context)
 
 def login(request, template_name='activity/login.html', redirect_field_name=REDIRECT_FIELD_NAME):
-    if hasattr(request, 'user') and request.user.is_authenticated():
+    if hasattr(request, 'user') and request.user.is_authenticated:
         redirect_to = request.POST.get(redirect_field_name,
             request.GET.get(redirect_field_name, ''))
         if not is_safe_url(url=redirect_to, host=request.get_host()):
