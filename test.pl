@@ -13,7 +13,7 @@ $mech->content() =~ m!<tr><td>$ADMIN</td><td>None</td></tr>!
 	or die $mech->content();
 
 $mech->follow_link(text => "Not logged in", url => "/");
-$mech->follow_link(text => "login", url => "/login/");
+$mech->follow_link(text => "login", url => "/login");
 $mech->set_visible($ADMIN, $PASSWORD);
 $mech->submit();
 
@@ -25,7 +25,7 @@ my $last_logon = $1;
 
 $mech->follow_link(text => "Logged in as $ADMIN", url => "/");
 
-$mech->follow_link(text => "logout", url => "/logout/");
+$mech->follow_link(text => "logout", url => "/logout");
 $mech->follow_link(text => "Not logged in", url => "/");
 $mech->content() =~ m!<tr><td>$ADMIN</td><td>$last_logon</td></tr>!
 	or die $mech->content();
@@ -57,7 +57,7 @@ $mech->follow_link(text => "Not logged in", url => "/");
 
 sleep(1.1);
 
-$mech->follow_link(text => "login", url => "/login/");
+$mech->follow_link(text => "login", url => "/login");
 $mech->field("username", $USER);
 $mech->field("password", $UPASSWORD);
 $mech->submit();
