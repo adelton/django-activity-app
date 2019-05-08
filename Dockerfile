@@ -7,7 +7,7 @@ RUN mkdir -p /var/www/django \
 	&& cd /var/www/django \
 	&& virtualenv-3 . \
 	&& source bin/activate \
-	&& pip install Django \
+	&& pip install 'Django == 2.0.5'\
 	&& django-admin startproject mysite \
 	&& cd mysite \
 	&& python manage.py startapp activity \
