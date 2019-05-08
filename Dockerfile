@@ -1,11 +1,11 @@
-FROM registry.fedoraproject.org/fedora:28
+FROM registry.fedoraproject.org/fedora
 
 MAINTAINER Jan Pazdziora
 
 RUN dnf install -y python3-virtualenv && dnf clean all
 RUN mkdir -p /var/www/django \
 	&& cd /var/www/django \
-	&& virtualenv-3 . \
+	&& virtualenv . \
 	&& source bin/activate \
 	&& pip install 'Django == 2.0.5'\
 	&& django-admin startproject mysite \
