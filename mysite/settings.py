@@ -128,6 +128,6 @@ INSTALLED_APPS.append( 'activity' )
 
 LOGIN_REDIRECT_URL = '/'
 
-DATETIME_FORMAT = 'N j, Y, H:i:s'
+DATETIME_FORMAT = 'M j, Y, H:i:s'
 
 USE_L10N = False
