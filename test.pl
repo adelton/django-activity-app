@@ -9,6 +9,6 @@ use WWW::Mechanize ();
 my $mech = new WWW::Mechanize(autocheck => 1, strict_forms => 1);
 $mech->get($URL);
 
-$mech->content() =~ /We will show the activity of users here/
+$mech->content() =~ /No activity recorded/
 	or die $mech->content();
 
