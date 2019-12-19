@@ -10,5 +10,5 @@ run:
 	for i in $$( seq 1 10 ) ; do docker logs django-activity | grep -q 'Quit the server with CONTROL-C' && break ; sleep 1 ; done
 
 test:
-	docker run --rm -ti --link django-activity:app.example.test django-activity-client http://app.example.test:8000
+	docker run --rm -ti --link django-activity:app.example.test django-activity-client http://app.example.test:8000 admin nimda
 
