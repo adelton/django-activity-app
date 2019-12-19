@@ -1,0 +1,14 @@
+language: generic
+sudo: required
+
+services:
+- docker
+
+install: true
+
+before_script:
+- make build
+
+script:
+- make run
+- make test
