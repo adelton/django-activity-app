@@ -1,0 +1,5 @@
+FROM registry.fedoraproject.org/fedora
+
+RUN dnf install -y 'perl(WWW::Mechanize)' && dnf clean all
+COPY test.pl /usr/bin/test.pl
+ENTRYPOINT [ "/usr/bin/test.pl" ]
