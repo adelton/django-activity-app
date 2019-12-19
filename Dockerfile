@@ -8,14 +8,15 @@ RUN mkdir -p /var/www/django \
 	&& pip install 'Django == 3.0.*' \
 	&& django-admin startproject mysite \
 	&& cd mysite \
-	&& python manage.py startapp activity
+	&& python manage.py startapp activity \
+	&& python manage.py migrate
 
 COPY manage.py /app/
 COPY mysite /app/mysite/
 COPY activity /app/activity/
 RUN grep '^SECRET_KEY' /var/www/django/mysite/mysite/settings.py | sed -i -e 's/^SECRET_KEY.*//;T;R /dev/stdin' -e 'd' /app/mysite/settings.py
 # Catch when django-admin starts producing different content
-RUN diff --exclude=__pycache__ -ru /var/www/django/mysite /app
+RUN diff --exclude=__pycache__ --exclude=db.sqlite3 -ru /var/www/django/mysite /app
 RUN cp -rp /app/* /var/www/django/mysite/
 
 EXPOSE 8000
