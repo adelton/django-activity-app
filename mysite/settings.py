@@ -125,3 +125,9 @@ STATIC_URL = '/static/'
 ALLOWED_HOSTS = [ "*" ]
 
 INSTALLED_APPS.append( 'activity' )
+
+LOGIN_REDIRECT_URL = '/'
+
+DATETIME_FORMAT = 'M j, Y, H:i:s'
+
+USE_L10N = False

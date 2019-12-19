@@ -1,4 +1,6 @@
+{% extends "activity/base.html" %}
 
+{% block content %}
 {% if activity_list %}
     <table>
     <thead>
@@ -13,4 +15,4 @@
 {% else %}
     <p>No activity recorded.</p>
 {% endif %}
-
+{% endblock %}
