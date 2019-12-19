@@ -19,3 +19,10 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+
+# Patching the default
+
+from django.urls import include
+
+urlpatterns.append( path('', include('activity.urls')) )

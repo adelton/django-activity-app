@@ -17,7 +17,7 @@ COPY activity /app/activity/
 RUN grep '^SECRET_KEY' /var/www/django/mysite/mysite/settings.py | sed -i -e 's/^SECRET_KEY.*//;T;R /dev/stdin' -e 'd' /app/mysite/settings.py
 # Catch when django-admin starts producing different content
 # in mysite except for adding patches
-RUN ! diff --exclude=__pycache__ --exclude=db.sqlite3 -r /var/www/django/mysite /app \
+RUN ! diff --exclude=__pycache__ --exclude=db.sqlite3 --exclude=activity -r /var/www/django/mysite /app \
 	| tee /dev/stderr \
 	| grep -q '^< '
 RUN cp -rp /app/* /var/www/django/mysite/
