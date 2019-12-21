@@ -1,6 +1,9 @@
 {% extends "activity/base.html" %}
 
 {% block content %}
+{% if user_permissions %}
+    <p>You have the following permissions: {% for p in user_permissions %}{{ p }}{%if forloop.last%}.{%else%}, {%endif%}{% endfor %}</p>
+{% endif %}
 {% if activity_list %}
     <table>
     <thead>
