@@ -1,7 +1,5 @@
 FROM registry.fedoraproject.org/fedora
 
-MAINTAINER Jan Pazdziora
-
 RUN dnf install -y python3-virtualenv diffutils && dnf clean all
 RUN mkdir -p /var/www/django \
 	&& cd /var/www/django \
