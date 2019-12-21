@@ -1,3 +1,8 @@
+
+# Copyright 2016--2019 Jan Pazdziora
+#
+# Licensed under the Apache License, Version 2.0 (the "License").
+
 from django.urls import path
 
 from . import views

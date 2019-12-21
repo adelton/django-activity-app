@@ -5,8 +5,9 @@ build:
 
 run:
 	docker rm -f django-activity || :
-	docker run --rm -t --name django-activity -p 8000:8000 django-activity &
-	sleep 1
+	docker run --rm -t -d --name django-activity -p 8000:8000 django-activity
+	docker attach --no-stdin django-activity &
+	for i in $$( seq 1 10 ) ; do docker logs django-activity | grep -q 'Quit the server with CONTROL-C' && break ; sleep 1 ; done
 
 test:
 	docker run --rm -ti --link django-activity:app.example.test django-activity-client http://app.example.test:8000 admin nimda
