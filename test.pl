@@ -17,6 +17,8 @@ $mech->follow_link(text => "login", url => "/login");
 $mech->set_visible($ADMIN, $PASSWORD);
 $mech->submit();
 
+$mech->content() =~ m!<tr><td>Username</td><td>$ADMIN</td></tr>!
+	or die $mech->content();
 $mech->content() =~ m!<tr><td>$ADMIN</td><td>(\w+ \d+, \d{4}, \d{1,2}:\d{2}:\d{2})</td></tr>!
 	or die $mech->content();
 my $last_logon = $1;
