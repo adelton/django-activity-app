@@ -1,0 +1,17 @@
+name: Build and test Django activity applications
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '42 5 3 * *'
+
+jobs:
+  test-docker:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: make build
+      - run: make run
+      - run: make test
