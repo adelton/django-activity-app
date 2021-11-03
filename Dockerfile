@@ -25,4 +25,4 @@ RUN ! diff --exclude=__pycache__ --exclude=db.sqlite3 --exclude=activity -r /var
 RUN cp -rp /app/* /var/www/django/mysite/
 
 EXPOSE 8000
-ENTRYPOINT cd /var/www/django && source bin/activate && cd mysite && python manage.py runserver 0.0.0.0:8000
+ENTRYPOINT cd /var/www/django && source bin/activate && cd mysite && python -Wd manage.py runserver 0.0.0.0:8000
