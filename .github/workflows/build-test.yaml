@@ -15,3 +15,10 @@ jobs:
       - run: make build
       - run: make run
       - run: make test
+  test-podman:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: make build docker=podman
+      - run: make run docker=podman
+      - run: make test docker=podman
