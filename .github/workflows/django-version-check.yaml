@@ -13,4 +13,4 @@ jobs:
       - run: |
           curl -s https://www.djangoproject.com/ > djangoproject.html
           grep 'Download.*latest release' djangoproject.html
-          grep 'Download.*latest release: 4\.0\.' djangoproject.html
+          grep 'Download.*latest release: 4\.1\b' djangoproject.html
