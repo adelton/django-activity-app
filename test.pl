@@ -27,7 +27,8 @@ my $last_logon = $1;
 
 $mech->follow_link(text => "Logged in as $ADMIN", url => "/");
 
-$mech->follow_link(text => "logout", url => "/logout");
+$mech->form_id('logout-form');
+$mech->submit();
 $mech->follow_link(text => "Not logged in", url => "/");
 $mech->content() =~ m!<tr><td>$ADMIN</td><td>$last_logon</td></tr>!
 	or die $mech->content();
