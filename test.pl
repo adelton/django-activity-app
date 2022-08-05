@@ -3,6 +3,8 @@
 use strict;
 use warnings FATAL => 'all';
 my ($URL, $ADMIN, $PASSWORD) = @ARGV;
+
+$| = 1;
 print "Will test against [$URL] with [$ADMIN/$PASSWORD]\n";
 
 use WWW::Mechanize ();
@@ -67,3 +69,5 @@ $mech->content() =~ m!<tr><td>$ADMIN</td><td>$new_last_logon</td></tr>!
 $mech->content() =~ m!<tr><td>$USER</td><td>(\w+ \d+, \d{4}, \d{1,2}:\d{2}:\d{2})</td></tr>!
 	or die $mech->content();
 $mech->follow_link(text => "Logged in as $USER", url => "/");
+
+print "$0 OK.\n";
