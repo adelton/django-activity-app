@@ -42,10 +42,12 @@ my $USER = "bob";
 my $UPASSWORD = "x3zIownc6s";
 
 $mech->follow_link(text => "Add", url => "/admin/auth/user/add/");
+$mech->form_id('user_form');
 $mech->set_visible($USER, $UPASSWORD, $UPASSWORD);
 $mech->submit();
 
-$mech->follow_link(text => "Log out", url => "/admin/logout/");
+$mech->form_id('logout-form');
+$mech->submit();
 
 $mech->get("/");
 $mech->content() =~ m!<tr><td>$ADMIN</td><td>(\w+ \d+, \d{4}, \d{1,2}:\d{2}:\d{2})</td></tr>!
