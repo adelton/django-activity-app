@@ -26,6 +26,8 @@
     {% if user_permissions %}
         <tr><td>Permissions</td><td>{% for p in user_permissions %}{{ p }}{%if forloop.last%}.{%else%}, {%endif%}{% endfor %}</td></tr>
     {% endif %}
+        <tr><td>Is staff</td><td>{% if user.is_staff %}Yes{% else %}No{% endif %}</td></tr>
+        <tr><td>Is superuser</td><td>{% if user.is_superuser %}Yes{% else %}No{% endif %}</td></tr>
     </tbody>
 </table>
 {% endif %}
