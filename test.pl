@@ -73,4 +73,19 @@ $mech->content() =~ m!<tr><td>$USER</td><td>(\w+ \d+, \d{4}, \d{1,2}:\d{2}:\d{2}
 	or die $mech->content();
 $mech->follow_link(text => "Logged in as $USER", url => "/");
 
+$mech->content() =~ m!<tr><td>$ADMIN</td><td>$new_last_logon</td></tr>!
+	or die $mech->content();
+$mech->content() =~ m!<tr><td>$USER</td><td>(\w+ \d+, \d{4}, \d{1,2}:\d{2}:\d{2})</td></tr>!
+	or die $mech->content();
+
+$mech->form_id('logout-form');
+$mech->submit();
+
+$mech->content() =~ m!<tr><td>$ADMIN</td><td>$new_last_logon</td></tr>!
+	or die $mech->content();
+$mech->content() =~ m!<tr><td>$USER</td><td>(\w+ \d+, \d{4}, \d{1,2}:\d{2}:\d{2})</td></tr>!
+	or die $mech->content();
+
+$mech->find_link(text => "Not logged in", url => "/");
+
 print "$0 OK.\n";

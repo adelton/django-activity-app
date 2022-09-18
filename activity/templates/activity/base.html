@@ -25,7 +25,7 @@
       {% if user.is_anonymous %}
       :: <a href="{% url 'login' %}">login</a>
       {% else %}
-      :: <form id="logout-form" method="post" action="{% url 'admin:logout' %}">{% csrf_token %}<input type="hidden" name="next" value="/"/><button type="submit">logout</button></form>
+      :: <form id="logout-form" method="post" action="{% url 'logout' %}">{% csrf_token %}<input type="hidden" name="next" value="/"/><button type="submit">logout</button></form>
       {% endif %}
 	:: <a href="/admin/">admin</a>
     </div>
