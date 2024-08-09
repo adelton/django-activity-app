@@ -56,14 +56,14 @@ my $BPASSWORD = "x3zIownc6s";
 
 $mech->follow_link(text => "Add", url => "/admin/auth/user/add/");
 $mech->form_id('user_form');
-$mech->set_visible($BUSER, $BPASSWORD, $BPASSWORD);
+$mech->set_visible([ text => $BUSER ], [ password => $BPASSWORD ], [ password => $BPASSWORD ]);
 $mech->click_button(value => "Save and add another");
 
 my $DUSER = "david";
 my $DPASSWORD = "Oj7HFnKasj72";
 
 $mech->form_id('user_form');
-$mech->set_visible($DUSER, $DPASSWORD, $DPASSWORD);
+$mech->set_visible([ text => $DUSER ], [ password => $DPASSWORD ], [ password => $DPASSWORD ]);
 $mech->click_button(value => "Save and continue editing");
 
 $mech->form_id('user_form');
