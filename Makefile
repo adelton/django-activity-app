@@ -11,7 +11,7 @@ run-docker:
 
 run-podman:
 	podman pod rm -f django-activity-pod || :
-	podman pod create --name django-activity-pod --hostname=app.example.test
+	podman pod create --name django-activity-pod --hostname=app.example.test -p 8000:8000
 	podman run --pod django-activity-pod --rm -t -d --name django-activity django-activity
 
 run: run-$(docker)
