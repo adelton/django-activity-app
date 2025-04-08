@@ -1,5 +1,5 @@
 
-docker := docker
+docker := $(shell which podman > /dev/null 2>&1 && echo podman || echo docker )
 
 build:
 	$(docker) build -t django-activity .
