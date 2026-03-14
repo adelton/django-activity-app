@@ -11,14 +11,14 @@ jobs:
   test-docker:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: make build docker=docker
       - run: make run docker=docker
       - run: make test docker=docker
   test-podman:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: make build docker=podman
       - run: make run docker=podman
       - run: make test docker=podman
