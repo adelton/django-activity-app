@@ -8,17 +8,19 @@ on:
     - cron: '42 5 3 * *'
 
 jobs:
-  test-docker:
-    runs-on: ubuntu-24.04
+  test:
+    runs-on: ${{ matrix.runs-on }}
+    strategy:
+      fail-fast: false
+      matrix:
+        runtime:
+          - docker
+          - podman
+        runs-on:
+          - ubuntu-24.04-arm
+          - ubuntu-26.04-arm
     steps:
-      - uses: actions/checkout@v6
-      - run: make build docker=docker
-      - run: make run docker=docker
-      - run: make test docker=docker
-  test-podman:
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v6
-      - run: make build docker=podman
-      - run: make run docker=podman
-      - run: make test docker=podman
+      - uses: actions/checkout@v7
+      - run: make build docker=${{ matrix.runtime }}
+      - run: make run docker=${{ matrix.runtime }}
+      - run: make test docker=${{ matrix.runtime }}
